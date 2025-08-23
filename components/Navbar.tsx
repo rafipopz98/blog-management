@@ -1,15 +1,22 @@
 "use client";
 import React, { useState } from "react";
+import Image from "./Image";
+import Link from "next/link";
+import { ROUTE } from "@/helpers/routes";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="w-full h-16 md:h-20 flex items-center justify-between">
       {/* logo */}
-      <div className="flex items-center gap-4 text-2xl font-bold">
-        <img src="/logo.png" className="w-8 h-8 rounded-full" alt="logo" />
-        <span>Blog</span>
-      </div>
+
+      <Link
+        href={ROUTE.HOME}
+        className="flex items-center gap-4 text-2xl font-bold"
+      >
+        <Image src="logo.png" alt="Lama Logo" w={32} h={32} />
+        <span>blogs</span>
+      </Link>
 
       {/* mobile menu */}
       <div className="md:hidden">

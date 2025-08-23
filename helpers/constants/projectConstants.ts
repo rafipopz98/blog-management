@@ -1,0 +1,2 @@
+export const IMAGEKIT_URL_ENDPOINT =
+  process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT;
