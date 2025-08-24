@@ -9,7 +9,7 @@ const Categories = () => {
       <div className="flex overflow-x-auto md:overflow-visible gap-3 scrollbar-hide">
         <Link
           href={ROUTE.ALL_BLOGS}
-          className="bg-blue-800 text-white whitespace-nowrap rounded-full px-4 py-2"
+          className="bg-orange-800 text-white whitespace-nowrap rounded-full px-4 py-2"
         >
           All Blogs
         </Link>

@@ -4,6 +4,15 @@ import { blog } from "@/api/blogs/blog";
 
 const limit = 2;
 
+const btnClasses = (active: boolean, disabled: boolean) =>
+  [
+    "px-3 py-1 rounded transition font-medium",
+    disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer",
+    active
+      ? "bg-orange-400 text-white"
+      : "bg-orange-300 hover:bg-orange-400  text-gray-800",
+  ].join(" ");
+
 const BlogsList = () => {
   const [skip, setSkip] = useState(0);
 
@@ -16,7 +25,16 @@ const BlogsList = () => {
   if (error) return <p>Something went wrong!</p>;
 
   const blogs = data?.data.data || [];
+  const total = data?.data?.total || 0;
   const hasMore = data?.data?.hasMore;
+
+  const totalPages = Math.ceil(total / limit);
+  const currentPage = Math.floor(skip / limit) + 1;
+
+  const handlePageClick = (page: number) => {
+    if (page < 1 || page > totalPages) return;
+    setSkip((page - 1) * limit);
+  };
 
   return (
     <div className="flex flex-col gap-8 mb-8">
@@ -24,21 +42,46 @@ const BlogsList = () => {
         <BlogItems key={blog._id} blog={blog} />
       ))}
 
-      <div className="flex gap-4 mt-6">
-        <button
-          onClick={() => setSkip((prev) => Math.max(prev - limit, 0))}
-          disabled={skip === 0 || isFetching}
-          className="px-4 py-2 rounded bg-gray-200 disabled:opacity-50"
-        >
-          Previous
-        </button>
-        <button
-          onClick={() => setSkip((prev) => prev + limit)}
-          disabled={!hasMore || isFetching}
-          className="px-4 py-2 rounded bg-gray-200 disabled:opacity-50"
-        >
-          Next
-        </button>
+      {/* Pagination */}
+      <div className="flex justify-center mt-6">
+        <div className="flex items-center gap-2">
+          {/* Prev */}
+          <button
+            onClick={() => handlePageClick(currentPage - 1)}
+            disabled={currentPage === 1 || isFetching}
+            className={btnClasses(false, currentPage === 1 || isFetching)}
+          >
+            Previous
+          </button>
+
+          {/* Page Numbers */}
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
+            const isActive = page === currentPage;
+            const isDisabled = isActive || isFetching;
+            return (
+              <button
+                key={page}
+                onClick={() => handlePageClick(page)}
+                disabled={isDisabled}
+                className={btnClasses(isActive, isDisabled)}
+              >
+                {page}
+              </button>
+            );
+          })}
+
+          {/* Next */}
+          <button
+            onClick={() => handlePageClick(currentPage + 1)}
+            disabled={currentPage === totalPages || isFetching || !hasMore}
+            className={btnClasses(
+              false,
+              currentPage === totalPages || isFetching || !hasMore
+            )}
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -50,7 +50,7 @@ const WriteBlog = () => {
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="w-full border rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full border rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
           >
             <option value="">Select category</option>
             <option value="tech">Tech</option>
@@ -68,7 +68,7 @@ const WriteBlog = () => {
             placeholder="Enter blog title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full border rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full border rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
           />
         </div>
 
@@ -95,7 +95,7 @@ const WriteBlog = () => {
         <button
           type="submit"
           disabled={isPending}
-          className="bg-blue-500 text-white py-2 px-4 rounded-xl hover:bg-blue-600 transition disabled:opacity-50"
+          className="bg-orange-500 text-white py-2 px-4 rounded-xl hover:bg-orange-600 transition disabled:opacity-50"
         >
           {isPending ? "Publishing..." : "Publish Post"}
         </button>

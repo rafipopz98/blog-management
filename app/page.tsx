@@ -44,8 +44,6 @@ const App = () => {
         </div>
       </div>
 
-      {/* categories */}
-      <Categories />
       {/* top blogs */}
       <TopBlogs />
 

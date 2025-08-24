@@ -5,4 +5,5 @@ export const API = {
   CREATE_BLOG: "/blogs/create",
   FEATURED_BLOGS: "/blogs/get-featured",
   GET_ALL_BLOGS: "/blogs/get-all",
+  GET_SINGLE_BLOG: "/blogs/get",
 };

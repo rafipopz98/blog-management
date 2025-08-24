@@ -56,15 +56,7 @@ const Navbar = () => {
           <Link href={ROUTE.HOME} onClick={() => setIsOpen(false)}>
             Home
           </Link>
-          <Link href={ROUTE.TRENDING_BLOGS} onClick={() => setIsOpen(false)}>
-            Trending
-          </Link>
-          <Link
-            href={ROUTE.MOST_POPULAR_BLOGS}
-            onClick={() => setIsOpen(false)}
-          >
-            Most Popular
-          </Link>
+          <Link href={ROUTE.ALL_BLOGS}>All Blogs</Link>
           <Link href={ROUTE.ABOUT} onClick={() => setIsOpen(false)}>
             About
           </Link>
@@ -91,8 +83,7 @@ const Navbar = () => {
       {/* desktop menu */}
       <div className="hidden md:flex items-center gap-8 xl:gap-12 font-medium">
         <Link href={ROUTE.HOME}>Home</Link>
-        <Link href={ROUTE.TRENDING_BLOGS}>Trending</Link>
-        <Link href={ROUTE.MOST_POPULAR_BLOGS}>Most Popular</Link>
+        <Link href={ROUTE.ALL_BLOGS}>All Blogs</Link>
         <Link href={ROUTE.ABOUT}>About</Link>
         {hasMounted && user && user.id ? (
           <Link

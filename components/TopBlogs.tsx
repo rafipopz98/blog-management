@@ -12,12 +12,12 @@ const TopBlogs = () => {
     <div className="mt-8 flex flex-col lg:flex-row gap-8">
       {/* First (Main) Blog */}
       {blogs[0] && (
-        <div className="w-full lg:w-1/2 flex flex-col gap-4">
+        <div className="w-full lg:w-1/2 flex flex-col gap-4 border border-orange-800 rounded-xl p-4">
           <div className="flex items-center gap-4">
             <h1 className="font-semibold lg:text-lg">01.</h1>
             <Link
               href={`${ROUTE.ALL_BLOGS}?category=${blogs[0].category}`}
-              className="text-blue-800 lg:text-lg"
+              className="text-orange-800 lg:text-lg"
             >
               {blogs[0].category}
             </Link>
@@ -39,7 +39,10 @@ const TopBlogs = () => {
       {/* Remaining Blogs */}
       <div className="w-full lg:w-1/2 flex flex-col gap-4">
         {blogs.slice(1, 4).map((blog: any, index: number) => (
-          <div key={blog._id} className="lg:h-1/3 flex justify-between gap-4">
+          <div
+            key={blog._id}
+            className="lg:h-1/3 flex justify-between gap-4 border border-orange-800 rounded-xl p-2"
+          >
             <div className="w-2/3">
               <div className="flex items-center gap-4 text-sm lg:text-base mb-4">
                 <h1 className="font-semibold">
@@ -47,7 +50,7 @@ const TopBlogs = () => {
                 </h1>
                 <Link
                   href={`${ROUTE.ALL_BLOGS}?category=${blog.category}`}
-                  className="text-blue-800"
+                  className="text-orange-800"
                 >
                   {blog.category}
                 </Link>

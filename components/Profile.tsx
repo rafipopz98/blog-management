@@ -25,7 +25,7 @@ const Profile = () => {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full border rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full border rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
             />
           </div>
 

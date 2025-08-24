@@ -23,6 +23,11 @@ const getAllBlogs = async (params: any): Promise<ResponseData> => {
   return response.data;
 };
 
+const getSingleBlog = async (id: any): Promise<ResponseData> => {
+  const response = await api.get<ResponseData>(`${API.GET_SINGLE_BLOG}/${id}`);
+  return response.data;
+};
+
 export const blog = {
   getAllBlogs,
   useCreateBlog: () =>
@@ -40,5 +45,11 @@ export const blog = {
     useQuery<ResponseData, Error>({
       queryKey: ["all-blogs", params],
       queryFn: () => getAllBlogs(params),
+    }),
+
+  useGetSingleBlog: (id: string) =>
+    useQuery<ResponseData, Error>({
+      queryKey: ["all-blogs", id],
+      queryFn: () => getSingleBlog(id),
     }),
 };
