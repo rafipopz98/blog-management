@@ -56,7 +56,9 @@ const Navbar = () => {
           <Link href={ROUTE.HOME} onClick={() => setIsOpen(false)}>
             Home
           </Link>
-          <Link href={ROUTE.ALL_BLOGS}>All Blogs</Link>
+          <Link href={ROUTE.ALL_BLOGS} onClick={() => setIsOpen(false)}>
+            All Blogs
+          </Link>
           <Link href={ROUTE.ABOUT} onClick={() => setIsOpen(false)}>
             About
           </Link>

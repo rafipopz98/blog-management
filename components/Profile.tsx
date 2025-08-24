@@ -1,14 +1,37 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BlogItems from "./BlogItems";
+import { blog } from "@/api/blogs/blog";
+import { successToast } from "@/helpers/projectHelpers";
 
 const Profile = () => {
-  const [username, setUsername] = useState("JohnDoe");
-  const [email] = useState("johndoe@example.com");
+  const { data: profileData, refetch } = blog.useGetUserProfile();
+  const { mutateAsync, isPending } = blog.useUpdateUserName();
 
-  const handleUpdate = (e: React.FormEvent) => {
+  const { data } = blog.useGetUserBlogs();
+  console.log(profileData, "profileData");
+  const allBlogs = data?.data || [];
+
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    if (profileData?.data) {
+      setUsername(profileData.data.username);
+      setEmail(profileData.data.email);
+    }
+  }, [profileData]);
+
+  const handleUpdate = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Updated username:", username);
+    const res = await mutateAsync({
+      username,
+    });
+    refetch();
+    successToast({
+      title: "Username updated Successfully",
+      msg: "You've updated your username successfully.",
+    });
   };
 
   return (
@@ -53,14 +76,9 @@ const Profile = () => {
       {/* Blogs section */}
       <div className="">
         <h1 className="text-xl font-semibold mb-6">My Blogs</h1>
-        {/* <BlogItems />
-        <BlogItems />
-        <BlogItems />
-        <BlogItems />
-        <BlogItems />
-        <BlogItems />
-        <BlogItems />
-        <BlogItems /> */}
+        {allBlogs?.map((blog: any) => (
+          <BlogItems key={blog._id} blog={blog} />
+        ))}
       </div>
     </div>
   );

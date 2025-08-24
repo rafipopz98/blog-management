@@ -6,4 +6,7 @@ export const API = {
   FEATURED_BLOGS: "/blogs/get-featured",
   GET_ALL_BLOGS: "/blogs/get-all",
   GET_SINGLE_BLOG: "/blogs/get",
+  GET_USER_PROFILE: "/blogs/get-profile",
+  GET_USER_BLOGS: "/blogs/get-user-blogs",
+  UPDATE_USERNAME: "/user/update/profile",
 };
