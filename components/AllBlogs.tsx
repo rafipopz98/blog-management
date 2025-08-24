@@ -70,13 +70,13 @@ const AllBlogs = () => {
       </div>
 
       {/* Pagination (optional, if backend supports) */}
-      <div className="flex gap-4">
+      <div className="flex gap-4 my-6">
         <button
           disabled={skip === 0}
           onClick={() => setSkip((prev) => Math.max(prev - limit, 0))}
           className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
         >
-          Prev
+          Previous
         </button>
         <button
           disabled={blogs.length < limit}

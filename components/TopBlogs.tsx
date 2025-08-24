@@ -8,6 +8,22 @@ const TopBlogs = () => {
   const { data } = blog.useGetFeaturedBlogs();
   const blogs = data?.data || [];
   if (!blogs.length) return null;
+
+  const decodeHTML = (html: string) => {
+    if (typeof window !== "undefined") {
+      const txt = document.createElement("textarea");
+      txt.innerHTML = html;
+      return txt.value;
+    }
+    return html;
+  };
+
+  // Strip tags, decode HTML, and limit to 250 characters
+  const getExcerpt = (html: string, limit = 250) => {
+    const text = decodeHTML(html.replace(/<[^>]+>/g, ""));
+    return text.length > limit ? text.slice(0, limit) + "..." : text;
+  };
+
   return (
     <div className="mt-8 flex flex-col lg:flex-row gap-8">
       {/* First (Main) Blog */}
@@ -30,10 +46,15 @@ const TopBlogs = () => {
           >
             {blogs[0].title}
           </Link>
-          <p
-            className="text-gray-600"
-            dangerouslySetInnerHTML={{ __html: blogs[0].desc }}
-          ></p>
+          <p className="text-gray-600 text-justify">
+            {getExcerpt(blogs[0]?.desc || "", 250)}
+          </p>
+          <Link
+            href={`${ROUTE.BLOG}/${blogs[0]._id}`}
+            className="underline text-orange-800 text-sm"
+          >
+            Read More
+          </Link>
         </div>
       )}
 

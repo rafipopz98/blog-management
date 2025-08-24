@@ -43,7 +43,7 @@ const BlogsList = () => {
       ))}
 
       {/* Pagination */}
-      <div className="flex justify-center mt-6">
+      <div className="flex justify-center">
         <div className="flex items-center gap-2">
           {/* Prev */}
           <button

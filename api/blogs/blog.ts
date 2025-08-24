@@ -11,6 +11,11 @@ export type UpdateUsernameType = {
   username: string;
 };
 
+export type ResetPasswordType = {
+  oldPassword: string;
+  newPassword: string;
+};
+
 const createBlog = async (data: BlogFormDataType): Promise<ResponseData> => {
   const response = await api.post<ResponseData>(API.CREATE_BLOG, data);
   return response.data;
@@ -45,6 +50,23 @@ const updateUserName = async (
   data: UpdateUsernameType
 ): Promise<ResponseData> => {
   const response = await api.post<ResponseData>(API.UPDATE_USERNAME, data);
+  return response.data;
+};
+
+const resetPassword = async (
+  data: ResetPasswordType
+): Promise<ResponseData> => {
+  const response = await api.post<ResponseData>(API.RESET_PASSWORD, data);
+  return response.data;
+};
+
+const toggleFeatured = async (id: string): Promise<ResponseData> => {
+  const response = await api.patch<ResponseData>(API.TOGGLE_FEATURED, { id });
+  return response.data;
+};
+
+const DeleteBlog = async (id: string): Promise<ResponseData> => {
+  const response = await api.delete<ResponseData>(`${API.DELETE_BLOG}/${id}`);
   return response.data;
 };
 
@@ -88,5 +110,20 @@ export const blog = {
   useUpdateUserName: () =>
     useMutation<ResponseData, ResponseData, UpdateUsernameType>({
       mutationFn: updateUserName,
+    }),
+
+  useResetPassword: () =>
+    useMutation<ResponseData, ResponseData, ResetPasswordType>({
+      mutationFn: resetPassword,
+    }),
+
+  useToggleFeatured: (id: string) =>
+    useMutation<ResponseData, ResponseData, string>({
+      mutationFn: () => toggleFeatured(id),
+    }),
+
+  useDeleteBlog: (id: string) =>
+    useMutation<ResponseData, ResponseData, string>({
+      mutationFn: () => DeleteBlog(id),
     }),
 };
