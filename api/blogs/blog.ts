@@ -16,6 +16,13 @@ export type ResetPasswordType = {
   newPassword: string;
 };
 
+export type UpdateBlogType = {
+  id: string;
+  title?: string;
+  desc?: string;
+  category?: string;
+};
+
 const createBlog = async (data: BlogFormDataType): Promise<ResponseData> => {
   const response = await api.post<ResponseData>(API.CREATE_BLOG, data);
   return response.data;
@@ -67,6 +74,11 @@ const toggleFeatured = async (id: string): Promise<ResponseData> => {
 
 const DeleteBlog = async (id: string): Promise<ResponseData> => {
   const response = await api.delete<ResponseData>(`${API.DELETE_BLOG}/${id}`);
+  return response.data;
+};
+
+const updateBlog = async (data: UpdateBlogType): Promise<ResponseData> => {
+  const response = await api.patch<ResponseData>(API.UPDATE_BLOG, data);
   return response.data;
 };
 
@@ -125,5 +137,10 @@ export const blog = {
   useDeleteBlog: (id: string) =>
     useMutation<ResponseData, ResponseData, string>({
       mutationFn: () => DeleteBlog(id),
+    }),
+
+  useUpdateBlog: (data: UpdateBlogType) =>
+    useMutation<ResponseData, ResponseData, UpdateBlogType>({
+      mutationFn: () => updateBlog(data),
     }),
 };

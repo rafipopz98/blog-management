@@ -2,6 +2,7 @@
 import { auth } from "@/api/auth/auth";
 import { successToast } from "@/helpers/projectHelpers";
 import { ROUTE } from "@/helpers/routes";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
@@ -99,6 +100,16 @@ const RegisterPage = () => {
           >
             Sign In
           </button>
+
+          <p className="text-sm text-gray-600 my-4">
+            Already have an account?{" "}
+            <Link
+              href={ROUTE.LOGIN}
+              className="text-[#D4A373] hover:text-[#c18d5d] transition-all duration-200"
+            >
+              Login
+            </Link>
+          </p>
         </div>
       </div>
 

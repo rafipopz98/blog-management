@@ -9,4 +9,5 @@ export const ROUTE = {
   CREATE_BLOG: "/create-blog",
   ALL_BLOGS: "/all-blogs",
   BLOG: "/blog",
+  EDIT_BLOGS: "/edit-blog",
 };

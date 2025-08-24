@@ -34,7 +34,7 @@ const IndividualBlog = ({ id }: { id: string }) => {
   };
 
   const handleEdit = () => {
-    console.log("Edit blog");
+    navigate.push(`${ROUTE.EDIT_BLOGS}/${id}`);
   };
 
   const handleDelete = async () => {

@@ -11,4 +11,5 @@ export const API = {
   UPDATE_USERNAME: "/user/update/profile",
   TOGGLE_FEATURED: "/blogs/feature",
   DELETE_BLOG: "/blogs/delete",
+  UPDATE_BLOG: "/blogs/update",
 };

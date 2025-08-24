@@ -82,6 +82,16 @@ const LoginPage = () => {
           >
             Sign In
           </button>
+
+          <p className="text-sm text-gray-600 my-4">
+            Don't have an account?{" "}
+            <span
+              onClick={() => navigate.push(ROUTE.REGISTER)}
+              className="text-[#D4A373] cursor-pointer"
+            >
+              Sign Up
+            </span>
+          </p>
         </div>
       </div>
 
