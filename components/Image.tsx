@@ -1,12 +1,13 @@
+"use client";
 import { IMAGEKIT_URL_ENDPOINT } from "@/helpers/constants/projectConstants";
 import { IKImage } from "imagekitio-react";
 
 type Props = {
   src: string;
   className?: string;
-  w: number;
-  h: number;
-  alt: string;
+  w?: number;
+  h?: number;
+  alt?: string;
 };
 
 const Image: React.FC<Props> = ({ src, className, w, h, alt }) => {

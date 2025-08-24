@@ -1,7 +1,12 @@
+import WriteBlog from "@/components/WriteBlog";
 import React from "react";
 
-const Createblog = () => {
-  return <div>Createblog</div>;
+const CreateBlog = () => {
+  return (
+    <div>
+      <WriteBlog />
+    </div>
+  );
 };
 
-export default Createblog;
+export default CreateBlog;

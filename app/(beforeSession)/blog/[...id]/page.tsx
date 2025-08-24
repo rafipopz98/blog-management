@@ -1,7 +1,8 @@
+import IndividualBlog from "@/components/IndividualBlog";
 import React from "react";
 
-const IndividualBlog = () => {
-  return <div>IndividualBlog</div>;
+const SingleBlog = () => {
+  return <IndividualBlog />;
 };
 
-export default IndividualBlog;
+export default SingleBlog;

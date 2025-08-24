@@ -7,4 +7,5 @@ export const ROUTE = {
   MOST_POPULAR_BLOGS: "/most-popular",
   ABOUT: "/about",
   CREATE_BLOG: "/create-blog",
+  ALL_BLOGS: "/all-blogs",
 };

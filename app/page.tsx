@@ -1,4 +1,7 @@
 "use client";
+import BlogsList from "@/components/BlogsList";
+import Categories from "@/components/Categories";
+import TopBlogs from "@/components/TopBlogs";
 import { ROUTE } from "@/helpers/routes";
 import { useUser } from "@/hooks/use-user";
 import Link from "next/link";
@@ -8,7 +11,7 @@ const App = () => {
   const user = useUser();
 
   return (
-    <div className="px-4 sm:px-6 lg:px-12 py-6">
+    <div className="gap-4">
       {/* breadcrumbs */}
       <div className="flex items-center gap-2 text-sm text-gray-500 mb-4 flex-wrap">
         <Link href={ROUTE.HOME} className="hover:underline whitespace-nowrap">
@@ -39,6 +42,17 @@ const App = () => {
             Write Blog
           </Link>
         </div>
+      </div>
+
+      {/* categories */}
+      <Categories />
+      {/* top blogs */}
+      <TopBlogs />
+
+      {/* recent blogs */}
+      <div className="">
+        <h1 className="my-8 text-2xl text-gray-600">Recent Blogs</h1>
+        <BlogsList />
       </div>
     </div>
   );
