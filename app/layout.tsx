@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import BreadCrumps from "@/components/BreadCrumps";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import QueryProvider from "@/components/QueryProvider";
 import { Toaster } from "sonner";
 

@@ -15,13 +15,14 @@ const TopBlogs = () => {
         <div className="w-full lg:w-1/2 flex flex-col gap-4 border border-orange-800 rounded-xl p-4">
           <div className="flex items-center gap-4">
             <h1 className="font-semibold lg:text-lg">01.</h1>
-            <Link
-              href={`${ROUTE.ALL_BLOGS}?category=${blogs[0].category}`}
-              className="text-orange-800 lg:text-lg"
-            >
-              {blogs[0].category}
-            </Link>
-            <span className="text-gray-500">{format(blogs[0].createdAt)}</span>
+
+            <div className="flex items-center gap-2 text-gray-400 text-sm whitespace-nowrap">
+              <span>By</span>
+              <div className="text-orange-800">{blogs[0]?.user?.username}</div>
+              <span>on</span>
+              <div className="text-orange-800">{blogs[0].category}</div>
+              <span>{format(blogs[0]?.createdAt)}</span>
+            </div>
           </div>
           <Link
             href={`${ROUTE.BLOG}/${blogs[0]._id}`}
@@ -48,15 +49,13 @@ const TopBlogs = () => {
                 <h1 className="font-semibold">
                   {String(index + 2).padStart(2, "0")}.
                 </h1>
-                <Link
-                  href={`${ROUTE.ALL_BLOGS}?category=${blog.category}`}
-                  className="text-orange-800"
-                >
-                  {blog.category}
-                </Link>
-                <span className="text-gray-500 text-sm">
-                  {format(blog.createdAt)}
-                </span>
+                <div className="flex items-center gap-2 text-gray-400 text-xs whitespace-nowrap">
+                  <span>By</span>
+                  <div className="text-orange-800">{blog?.user?.username}</div>
+                  <span>on</span>
+                  <div className="text-orange-800">{blog.category}</div>
+                  <span>{format(blog?.createdAt)}</span>
+                </div>
               </div>
               <Link
                 href={`${ROUTE.BLOG}/${blog._id}`}

@@ -35,12 +35,21 @@ const App = () => {
         </div>
 
         <div className="flex justify-center sm:justify-end whitespace-nowrap">
-          <Link
-            href={ROUTE.CREATE_BLOG}
-            className="px-5 py-2 text-sm sm:text-base bg-orange-700 text-white rounded-full hover:bg-orange-800 transition"
-          >
-            Write Blog
-          </Link>
+          {user && user?.user?.id ? (
+            <Link
+              href={ROUTE.CREATE_BLOG}
+              className="px-5 py-2 text-sm sm:text-base bg-orange-700 text-white rounded-full hover:bg-orange-800 transition"
+            >
+              Write Blog
+            </Link>
+          ) : (
+            <Link
+              href={ROUTE.LOGIN}
+              className="px-5 py-2 text-sm sm:text-base bg-orange-700 text-white rounded-full hover:bg-orange-800 transition"
+            >
+              Write Blog
+            </Link>
+          )}
         </div>
       </div>
 

@@ -1,20 +1,17 @@
 "use client";
 import React from "react";
-import Image from "./Image";
 import { format } from "timeago.js";
 import Comments from "./Comments";
 import { blog } from "@/api/blogs/blog";
-import { useSearchParams } from "next/navigation";
 
 const IndividualBlog = ({ id }: { id: string }) => {
   const { data } = blog.useGetSingleBlog(id.toString());
-  console.log("data", id);
   const singleBlog = data?.data || {};
 
   return (
     <div className="flex flex-col gap-8">
       <div className="flex gap-8">
-        <div className="lg:w-3/5 flex flex-col gap-8">
+        <div className=" flex flex-col gap-8">
           <h1 className="text-xl md:text-3xl xl:text-4xl 2xl:text-5xl font-semibold">
             {singleBlog?.title}
           </h1>

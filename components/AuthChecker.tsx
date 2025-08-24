@@ -6,19 +6,22 @@ import { useUser } from "@/hooks/use-user";
 import { useRouter } from "next/navigation";
 
 const AuthChecker = ({ children }: { children: React.ReactNode }) => {
-  const user = useUser();
+  const { user, isLoading } = useUser();
   const router = useRouter();
 
   useEffect(() => {
-    if (!user || !user.id) {
+    if (!isLoading && (!user || !user.id)) {
       errorToast({
         title: "Unauthorized",
         msg: "You are not logged in",
       });
       router.push("/");
     }
-  }, [user, router]);
+  }, [user, isLoading, router]);
 
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   if (!user || !user.id) {
     return null;
   }

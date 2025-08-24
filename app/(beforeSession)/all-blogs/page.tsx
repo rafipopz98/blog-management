@@ -1,7 +1,8 @@
+import AllBlogs from "@/components/AllBlogs";
 import React from "react";
 
-const AllBlogs = () => {
-  return <div>AllBlogs</div>;
+const page = () => {
+  return <AllBlogs />;
 };
 
-export default AllBlogs;
+export default page;

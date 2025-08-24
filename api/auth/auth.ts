@@ -18,10 +18,15 @@ type AuthPayload = {
   role: string;
 };
 
+const dispatchUserChange = () => {
+  window.dispatchEvent(new CustomEvent("userChanged"));
+};
+
 const loginStore = (response: AxiosResponse<ResponseData<AuthPayload>>) => {
   const responseData: any = response?.data?.data ?? {};
   storeLocal(responseData.token, DEFAULT_TOKEN);
   storeLocal(responseData, USER_DATA);
+  dispatchUserChange();
 };
 
 const register = async (data: LoginFormDataType): Promise<ResponseData> => {
