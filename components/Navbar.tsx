@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import Image from "./Image";
 import Link from "next/link";
 import { ROUTE } from "@/helpers/routes";
+import { useUser } from "@/hooks/use-user";
 
 const Navbar = () => {
+  const user = useUser();
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="w-full h-16 md:h-20 flex items-center justify-between">
@@ -32,29 +34,37 @@ const Navbar = () => {
             isOpen ? "-right-0" : "-right-[100%]"
           }`}
         >
-          <a href="/">Home</a>
-          <a href="/">Trending</a>
-          <a href="/">Most Popular</a>
-          <a href="/">About</a>
-          <a href="/">
-            <button className="py-2 px-4 rounded-3xl bg-[#D4A373] text-white">
-              Login
+          <Link href={ROUTE.HOME}>Home</Link>
+          <Link href={ROUTE.TRENDING_BLOGS}>Trending</Link>
+          <Link href={ROUTE.MOST_POPULAR_BLOGS}>Most Popular</Link>
+          <Link href={ROUTE.ABOUT}>About</Link>
+          {user ? (
+            <button className="py-2 px-4 rounded-3xl bg-[#D4A373] text-white cursor-pointer">
+              <Link href={ROUTE.PROFILE}>Profile</Link>
             </button>
-          </a>
+          ) : (
+            <button className="py-2 px-4 rounded-3xl bg-[#D4A373] text-white cursor-pointer">
+              <Link href={ROUTE.LOGIN}>Login</Link>
+            </button>
+          )}
         </div>
       </div>
 
       {/* desktop menu */}
       <div className="hidden md:flex items-center gap-8 xl:gap-12 font-medium">
-        <a href="/">Home</a>
-        <a href="/">Trending</a>
-        <a href="/">Most Popular</a>
-        <a href="/">About</a>
-        <a href="/">
-          <button className="py-2 px-4 rounded-3xl bg-[#D4A373] text-white">
-            Login
+        <Link href={ROUTE.HOME}>Home</Link>
+        <Link href={ROUTE.TRENDING_BLOGS}>Trending</Link>
+        <Link href={ROUTE.MOST_POPULAR_BLOGS}>Most Popular</Link>
+        <Link href={ROUTE.ABOUT}>About</Link>
+        {user ? (
+          <button className="py-2 px-4 rounded-3xl bg-[#D4A373] text-white cursor-pointer">
+            <Link href={ROUTE.PROFILE}>Profile</Link>
           </button>
-        </a>
+        ) : (
+          <button className="py-2 px-4 rounded-3xl bg-[#D4A373] text-white cursor-pointer">
+            <Link href={ROUTE.LOGIN}>Login</Link>
+          </button>
+        )}
       </div>
     </div>
   );
