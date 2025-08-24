@@ -9,7 +9,6 @@ const Profile = () => {
   const { data: profileData, refetch } = blog.useGetUserProfile();
   const { mutateAsync, isPending } = blog.useUpdateUserName();
   const { data } = blog.useGetUserBlogs();
-  console.log(profileData, "profileData");
   const allBlogs = data?.data || [];
 
   const [username, setUsername] = useState("");
@@ -25,7 +24,7 @@ const Profile = () => {
 
   const handleUpdate = async (e: React.FormEvent) => {
     e.preventDefault();
-    const res = await mutateAsync({
+    await mutateAsync({
       username,
     });
     refetch();
@@ -77,7 +76,7 @@ const Profile = () => {
             type="submit"
             className="bg-[#D4A373] text-white py-2 px-4 rounded-xl hover:bg-[#bf8753] transition cursor-pointer"
           >
-            Update
+            {isPending ? "Updating..." : "Update"}
           </button>
         </form>
       </div>

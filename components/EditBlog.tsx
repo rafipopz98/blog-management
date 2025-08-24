@@ -12,7 +12,6 @@ interface EditBlogProps {
 }
 
 const EditBlog = ({ id }: EditBlogProps) => {
-  console.log(id);
   const [category, setCategory] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");

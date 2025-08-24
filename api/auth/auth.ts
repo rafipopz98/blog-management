@@ -1,7 +1,7 @@
-import api, { ApiError, ResponseData } from "@/helpers/axiosHelper";
+import api, { ResponseData } from "@/helpers/axiosHelper";
 import { API } from "@/helpers/constants/apiConstants";
 import { DEFAULT_TOKEN, USER_DATA } from "@/helpers/constants/projectConstants";
-import { errorToast, storeLocal } from "@/helpers/projectHelpers";
+import { storeLocal } from "@/helpers/projectHelpers";
 import type { AxiosResponse } from "axios";
 import { useMutation } from "@tanstack/react-query";
 

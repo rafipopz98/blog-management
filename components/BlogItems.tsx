@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "./Image";
 import Link from "next/link";
 import { format } from "timeago.js";
 import { ROUTE } from "@/helpers/routes";

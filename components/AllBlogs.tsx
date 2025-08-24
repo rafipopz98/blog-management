@@ -11,7 +11,7 @@ const AllBlogs = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [sortQuery, setSortQuery] = useState<string>("desc");
 
-  const { data, error, isLoading, isFetching } = blog.useGetAllBlogs({
+  const { data, isLoading, isFetching } = blog.useGetAllBlogs({
     skip,
     limit,
     category: category || undefined,

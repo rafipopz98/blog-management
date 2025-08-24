@@ -14,7 +14,7 @@ const RegisterPage = () => {
   const [password, setPassword] = useState("");
   const navigate = useRouter();
 
-  const handleRegister = (e: React.FormEvent) => {
+  const handleRegister = () => {
     const formData = { email, username, password };
     mutateAsync(formData).then((res) => {
       const role = res.data.role;
@@ -98,7 +98,7 @@ const RegisterPage = () => {
             onClick={handleRegister}
             className="w-full bg-[#D4A373] text-white py-2 px-4 rounded-lg font-semibold hover:bg-[#c18d5d] transition-all duration-200 shadow-md"
           >
-            Sign In
+            {isPending ? "Registering..." : "Register"}
           </button>
 
           <p className="text-sm text-gray-600 my-4">

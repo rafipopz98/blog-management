@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { blog } from "@/api/blogs/blog";
-import { successToast, errorToast } from "@/helpers/projectHelpers";
+import { successToast } from "@/helpers/projectHelpers";
 
 const PasswordModal = ({
   isOpen,
@@ -18,7 +18,7 @@ const PasswordModal = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    const res: any = await resetPassword({ oldPassword, newPassword });
+    await resetPassword({ oldPassword, newPassword });
     successToast({
       title: "Password updated Successfully",
       msg: "You've updated your password successfully.",

@@ -25,7 +25,7 @@ const IndividualBlog = ({ id }: { id: string }) => {
 
   const handleToggleFeatured = async () => {
     setIsFeatured(!isFeatured);
-    const res = await featureToggle(id);
+    await featureToggle(id);
     refetch();
     successToast({
       title: "Blog updated Successfully",

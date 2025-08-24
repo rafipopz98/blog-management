@@ -1,7 +1,7 @@
 "use client";
 import { auth } from "@/api/auth/auth";
 import { ApiError } from "@/helpers/axiosHelper";
-import { errorToast, successToast } from "@/helpers/projectHelpers";
+import { successToast } from "@/helpers/projectHelpers";
 import { ROUTE } from "@/helpers/routes";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -16,7 +16,7 @@ const LoginPage = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await mutateAsync({ email, password });
+      await mutateAsync({ email, password });
       successToast({
         title: "Login Successful",
         msg: "You've logged in successfully.",
@@ -80,7 +80,7 @@ const LoginPage = () => {
             onClick={handleLogin}
             className="w-full bg-[#D4A373] text-white py-2 px-4 rounded-lg font-semibold hover:bg-[#c18d5d] transition-all duration-200 shadow-md"
           >
-            Sign In
+            {isPending ? "Logging in..." : "Login"}
           </button>
 
           <p className="text-sm text-gray-600 my-4">

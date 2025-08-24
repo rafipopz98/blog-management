@@ -1,6 +1,5 @@
 "use client";
 import BlogsList from "@/components/BlogsList";
-import Categories from "@/components/Categories";
 import TopBlogs from "@/components/TopBlogs";
 import { ROUTE } from "@/helpers/routes";
 import { useUser } from "@/hooks/use-user";
