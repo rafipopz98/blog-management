@@ -8,4 +8,5 @@ export const ROUTE = {
   ABOUT: "/about",
   CREATE_BLOG: "/create-blog",
   ALL_BLOGS: "/all-blogs",
+  BLOG: "/blog",
 };

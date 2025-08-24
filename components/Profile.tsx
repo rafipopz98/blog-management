@@ -14,7 +14,7 @@ const Profile = () => {
   return (
     <div className="p-6 space-y-8">
       {/* Profile section */}
-      <div className="bg-white p-6 rounded-2xl shadow-md">
+      <div className="bg-[#FAEDCD] p-6 rounded-2xl shadow-md">
         <h1 className="text-xl font-semibold mb-6">Profile</h1>
 
         <form onSubmit={handleUpdate} className="flex flex-col gap-4">
@@ -43,7 +43,7 @@ const Profile = () => {
           {/* Update Button */}
           <button
             type="submit"
-            className="bg-blue-500 text-white py-2 px-4 rounded-xl hover:bg-blue-600 transition"
+            className="bg-[#D4A373] text-white py-2 px-4 rounded-xl hover:bg-[#bf8753] transition cursor-pointer"
           >
             Update
           </button>
@@ -53,14 +53,14 @@ const Profile = () => {
       {/* Blogs section */}
       <div className="">
         <h1 className="text-xl font-semibold mb-6">My Blogs</h1>
+        {/* <BlogItems />
         <BlogItems />
         <BlogItems />
         <BlogItems />
         <BlogItems />
         <BlogItems />
         <BlogItems />
-        <BlogItems />
-        <BlogItems />
+        <BlogItems /> */}
       </div>
     </div>
   );

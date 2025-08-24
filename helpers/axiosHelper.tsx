@@ -11,6 +11,7 @@ export type ResponseData<T = any> = {
   data: T | null;
   message?: string | null;
   error?: string | null;
+  hasMore?: boolean;
 };
 
 export class ApiError extends Error {
@@ -60,6 +61,7 @@ type Api = AxiosInstance & {
 const api = axios.create({
   baseURL: BASE_URL,
   headers: { "Content-Type": "application/json" },
+  withCredentials: true,
 }) as Api;
 
 api.interceptors.request.use(

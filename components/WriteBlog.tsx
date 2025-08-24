@@ -2,23 +2,42 @@
 import React, { useState } from "react";
 import SunEditor from "suneditor-react";
 import "suneditor/dist/css/suneditor.min.css";
+import { successToast, errorToast } from "@/helpers/projectHelpers";
+import { blog } from "@/api/blogs/blog";
+import { useRouter } from "next/navigation";
+import { ROUTE } from "@/helpers/routes";
 
 const WriteBlog = () => {
   const [category, setCategory] = useState("");
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState(""); // will hold HTML
+  const [description, setDescription] = useState("");
+  const { mutateAsync, isPending } = blog.useCreateBlog();
+  const navigate = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const newPost = {
-      category,
-      title,
-      description, // HTML output from SunEditor
-    };
+    try {
+      const res = await mutateAsync({
+        title,
+        desc: description,
+        category,
+      });
 
-    console.log("New Blog Post:", newPost);
-    // 👉 send this to your backend or API
+      successToast({
+        title: "Blog Published",
+        msg: "Your blog post has been created successfully.",
+      });
+
+      console.log("Created Blog:", res);
+      navigate.push(ROUTE.ALL_BLOGS);
+    } catch (err: any) {
+      console.error("Create blog error:", err);
+      errorToast({
+        title: "Failed to Publish",
+        msg: err?.message || "Something went wrong",
+      });
+    }
   };
 
   return (
@@ -53,7 +72,7 @@ const WriteBlog = () => {
           />
         </div>
 
-        {/* Description (SunEditor) */}
+        {/* Description */}
         <div>
           <label className="block text-sm font-medium mb-2">Description</label>
           <SunEditor
@@ -75,9 +94,10 @@ const WriteBlog = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="bg-blue-500 text-white py-2 px-4 rounded-xl hover:bg-blue-600 transition"
+          disabled={isPending}
+          className="bg-blue-500 text-white py-2 px-4 rounded-xl hover:bg-blue-600 transition disabled:opacity-50"
         >
-          Publish Post
+          {isPending ? "Publishing..." : "Publish Post"}
         </button>
       </form>
     </div>

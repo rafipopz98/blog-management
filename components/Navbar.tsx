@@ -68,7 +68,7 @@ const Navbar = () => {
           <Link href={ROUTE.ABOUT} onClick={() => setIsOpen(false)}>
             About
           </Link>
-          {hasMounted && user ? (
+          {hasMounted && user && user.id ? (
             <Link
               href={ROUTE.PROFILE}
               onClick={() => setIsOpen(false)}
@@ -94,7 +94,7 @@ const Navbar = () => {
         <Link href={ROUTE.TRENDING_BLOGS}>Trending</Link>
         <Link href={ROUTE.MOST_POPULAR_BLOGS}>Most Popular</Link>
         <Link href={ROUTE.ABOUT}>About</Link>
-        {hasMounted && user ? (
+        {hasMounted && user && user.id ? (
           <Link
             href={ROUTE.PROFILE}
             className="py-2 px-4 rounded-3xl bg-[#D4A373] text-white"
